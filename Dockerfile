@@ -9,6 +9,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY main.py ./
-RUN mkdir record
+RUN mkdir record && mkdir tmp
 
 CMD [ "python", "./main.py" ]

@@ -7,5 +7,5 @@ services:
       - ./RECORD_FOLDER:/usr/src/app/record
     environment:
       LINK: http://live.radioscanner.net/audio/ulli
-      SEGMENT_TIME: 60
+      SEGMENT_TIME: 3600
     restart: always
