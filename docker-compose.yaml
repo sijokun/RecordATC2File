@@ -1,0 +1,11 @@
+version: '3'
+services:
+  recorder:
+    container_name: RecordATC2File
+    build: .
+    volumes:
+      - ./RECORD_FOLDER:/usr/src/app/record
+    environment:
+      LINK: http://live.radioscanner.net/audio/ulli
+      SEGMENT_TIME: 60
+    restart: always
