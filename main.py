@@ -28,12 +28,12 @@ def get_winamp_link(url: str) -> dict:
     :return: winamp link for stream
     """
     raw_page = get_raw_page(url)
-    if 'Трансляция начата' not in raw_page:
-        return {'error': True, 'data': 'Трансляция была завершена или не сушествует'}
     dom = etree.HTML(raw_page)
     winamp_link_xpath = '//td/a/@href'
-
-    winamp_link = dom.xpath(winamp_link_xpath)[1]
+    xpath_res = dom.xpath(winamp_link_xpath)
+    if len(xpath_res) != 3:
+        return {'error': True, 'data': 'Трансляция была завершена или не сушествует'}
+    winamp_link = xpath_res[1]
 
     return {'error': False, 'data': winamp_link}
 
@@ -68,5 +68,6 @@ def main():
 
 
 if __name__ == '__main__':
+    print('starting...')
     main()
 
